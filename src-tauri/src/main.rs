@@ -6,49 +6,48 @@ mod converter;
 use converter::{ConversionResult, Converter};
 use std::fs;
 use std::path::Path;
+use tauri::Manager;
 use tauri_plugin_dialog::init as init_dialog;
 
 #[tauri::command]
-async fn convert_files(path: String, is_dir: bool) -> Result<ConversionResult, String> {
+async fn convert_files(paths: Vec<String>, _is_dir: bool) -> Result<ConversionResult, String> {
     let converter = Converter::default();
-    let input_path = Path::new(&path);
 
-    let output_dir = if is_dir {
-        input_path.join("wav-files")
-    } else {
-        input_path
-            .parent()
-            .unwrap_or(Path::new("."))
-            .join("wav-files")
-    };
+    let first_path = Path::new(&paths[0]);
+    let parent_dir = first_path.parent().unwrap_or(Path::new("."));
+    let output_dir = parent_dir.join("wav-converted");
 
     fs::create_dir_all(&output_dir).map_err(|e| e.to_string())?;
 
-    let files: Vec<_> = if is_dir {
-        fs::read_dir(input_path)
+    let mut all_files = Vec::new();
+    for path in paths {
+        let path = Path::new(&path);
+        let file = fs::read_dir(path.parent().unwrap_or(Path::new(".")))
             .map_err(|e| e.to_string())?
             .filter_map(Result::ok)
-            .filter(|entry| entry.path().extension().and_then(|ext| ext.to_str()) == Some("VR8"))
-            .collect()
-    } else {
-        vec![fs::read_dir(input_path.parent().unwrap_or(Path::new(".")))
-            .map_err(|e| e.to_string())?
-            .filter_map(Result::ok)
-            .find(|entry| entry.path() == input_path)
-            .ok_or_else(|| "File not found".to_string())?]
-    };
-    let converted = converter
-        .process_files(files, &output_dir)
-        .map_err(|e| e.to_string())?;
+            .find(|entry| entry.path() == path)
+            .ok_or_else(|| "error: file not found".to_string())?;
 
-    Ok(converted)
+        all_files.push(file);
+    }
+
+    converter.process_files(all_files, &output_dir)
+        .map_err(|e| e.to_string())
 }
-
 fn main() {
     tauri::Builder::default()
         .plugin(tauri_plugin_shell::init())
         .plugin(init_dialog())
         .invoke_handler(tauri::generate_handler![convert_files])
+        .setup(|app| {
+            let window = app.get_webview_window("main").unwrap();
+            window.on_window_event(|event| {
+                if let tauri::WindowEvent::CloseRequested { .. } = event {
+                    std::process::exit(0);
+                }
+            });
+            Ok(())
+        })
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

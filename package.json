@@ -15,35 +15,36 @@
   "dependencies": {
     "@tauri-apps/api": "^2.1.1",
     "@tauri-apps/plugin-dialog": "~2.2.0",
+    "@tauri-apps/plugin-log": "~2",
     "@tauri-apps/plugin-opener": "^2",
     "@tauri-apps/plugin-shell": "~2",
-    "dialog": "^0.3.1",
-    "tailwindcss": "^3.4.17",
     "autoprefixer": "^10.4.20",
     "clsx": "^2.1.1",
-    "sort-by": "^1.2.0",
+    "dialog": "^0.3.1",
+    "localforage": "^1.10.0",
+    "match-sorter": "^8.0.0",
     "postcss": "^8.4.49",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.1.1",
     "react-icons": "^5.4.0",
-    "match-sorter": "^8.0.0",
-    "localforage": "^1.10.0"
+    "react-router-dom": "^7.1.1",
+    "sort-by": "^1.2.0",
+    "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.6",
     "@sveltejs/kit": "^2.9.0",
     "@sveltejs/vite-plugin-svelte": "^5.0.0",
-    "@tauri-apps/cli": "^2",
     "@tailwindcss/language-server": "^0.0.27",
     "@tailwindcss/typography": "^0.5.15",
-    "svelte": "^5.0.0",
-    "svelte-check": "^4.0.0",
-    "typescript": "~5.6.2",
-    "vite": "^6.0.3",
+    "@tauri-apps/cli": "^2",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
-    "daisyui": "^4.12.23"
+    "daisyui": "^4.12.23",
+    "svelte": "^5.0.0",
+    "svelte-check": "^4.0.0",
+    "typescript": "~5.6.2",
+    "vite": "^6.0.3"
   }
 }

@@ -10,6 +10,7 @@
     "opener:default",
     "dialog:default",
     "dialog:default",
-    "shell:default"
+    "shell:default",
+    "log:default"
   ]
 }

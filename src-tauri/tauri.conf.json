@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "identifier": "com.vr8-converter.app",
   "build": {
-    "beforeDevCommand": "pnpm dev",
+    "beforeDevCommand": "pnpm dev --open",
     "devUrl": "http://localhost:1420",
     "beforeBuildCommand": "pnpm build",
     "frontendDist": "../dist"
@@ -14,7 +14,8 @@
       {
         "title": "vr8-converter",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "dragDropEnabled": false
       }
     ],
     "security": {
@@ -22,6 +23,7 @@
     }
   },
   "plugins": {
+    "log": "allow-log",
     "allowlist": {
       "dialog": {
         "open": true,
