@@ -3,13 +3,7 @@
 <p>convert VR8 to WAV in milliseconds! built in Rust & Tauri</p>
 </div>
 
-<div align="center">
-<a href="#features">✨ Features</a> •
-<a href="#install">🚀 Install</a>
-<a href="#build">🔨 Build</a>
-</div>
-
----
+<div><br></br></div>
 
 <div align="center">
   <img src="./assets/sc-2.png" width="99%">
@@ -17,29 +11,17 @@
   <img src="./assets/sc-1.png" width="99%">
 </div>
 
----
+## ✨ Features
 
-<div align="center">✨ Features<a name="features"></a>
-</div>
+fast conversion using Rust
+Batch processing support
+Smart memory handling for large files
 
-- fast conversion using Rust
-- Batch processing support
-- Smart memory handling for large files
-
----
-
-<div align="center">
-  <a name="setup">
-  <h2>🚀 Setup</h2>
-    </a>
-</div>
+## 🚀 Setup
 
 Check out the **Latest Release** and download the installer or <a href="#build">Build</a> from source (Linux)
 
----
-
-<div align="center">🔨 Build<a name="build"></a>
-</div>
+## 🔨 Build
 
 Requires:
 
