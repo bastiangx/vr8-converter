@@ -49,7 +49,13 @@
     "active": true,
     "copyright": "© 2024 bastiangx",
     "longDescription": "VR8 to WAV audio converter built with Rust. Features batch processing, smart memory handling, and a modern user interface",
-    "targets": ["appimage", "deb", "msi", "nsis", "rpm"],
+    "targets": [
+      "appimage",
+      "deb",
+      "msi",
+      "nsis",
+      "rpm"
+    ],
     "publisher": "bastiangx",
     "windows": {
       "webviewInstallMode": {
@@ -70,7 +76,8 @@
       "icons/128x128.png",
       "icons/128x128@2x.png",
       "icons/256x256.png",
-      "icons/icon.png"
+      "icons/icon.png",
+      "icons/icon.ico"
     ]
   }
 }
