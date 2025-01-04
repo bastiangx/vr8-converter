@@ -5,21 +5,18 @@
 
 <div align="center">
 <a href="#features">✨ Features</a> •
-<a href="#screenshots">📸 Screenshots</a> •
 <a href="#install">🚀 Install</a>
-<a href="#build">Build</a>
+<a href="#build">🔨 Build</a>
 </div>
 
 <div align="center">
-  <h2>📸 Screenshots</h2>
-  <img src="./assets/sc-2.png" width="45%">
-  <img src="./assets/sc-3.png" width="45%">
+  <img src="./assets/sc-2.png" width="99%">
+  <img src="./assets/sc-3.png" width="99%">
   <br/><br/>
-  <img src="./assets/sc-1.png" width="45%">
+  <img src="./assets/sc-1.png" width="99%">
 </div>
 
-<div align="center">
-## ✨ Features <a name="features"></a>
+<div align="center">✨ Features<a name="features"></a>
 </div>
 
 - fast conversion using Rust
@@ -28,16 +25,14 @@
 
 ---
 
-<div align="center">
-## 🚀 Setup <a name="install"></a>
+<div align="center">🚀 Setup<a name="install"></a>
 </div>
 
 Check out the **Latest Release** and download the installer or <a href="#build">Build</a> from source (Linux)
 
 ---
 
-<div align="center">
-### Build <a name="build"></a>
+<div align="center">🔨 Build<a name="build"></a>
 </div>
 
 Requires:
