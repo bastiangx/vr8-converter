@@ -4,20 +4,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Work Sans"', '"-apple-system"', '"system-ui"', "sans-serif"],
+        sans: ['"SF-Pro"', '"-apple-system"', '"system-ui"', "sans-serif"],
       },
     },
   },
   daisyui: {
-    themes: [
-      {
-        night: {
-          ...require("daisyui/src/theming/themes")["night"],
-          "base-100": "#11111b",
-        },
-      },
-      "nord",
-    ],
+    themes: ["nord", "night"],
   },
   plugins: [require("daisyui")],
 };

@@ -7,15 +7,24 @@
     "beforeDevCommand": "pnpm dev --open",
     "devUrl": "http://localhost:1420",
     "beforeBuildCommand": "pnpm build",
-    "frontendDist": "../build"
+    "frontendDist": "../dist/"
   },
   "app": {
+    "withGlobalTauri": false,
     "windows": [
       {
-        "title": "vr8-converter",
+        "title": "VR8 Converter",
+        "fullscreen": false,
         "width": 800,
         "height": 600,
-        "dragDropEnabled": false
+        "resizable": true,
+        "theme": "Dark",
+        "titleBarStyle": "Visible",
+        "dragDropEnabled": false,
+        "devtools": false,
+        "minHeight": 450,
+        "minWidth": 400,
+        "center": true
       }
     ],
     "security": {
@@ -23,27 +32,31 @@
     }
   },
   "plugins": {
-    "log": "allow-log",
+    "shell": {
+      "open": true
+    },
     "allowlist": {
+      "shell": {
+        "open": true
+      },
       "dialog": {
         "open": true,
-        "all": true,
-        "ask": true,
-        "confirm": true,
-        "message": true,
         "save": true
       }
     }
   },
   "bundle": {
     "active": true,
-    "targets": "all",
+    "copyright": "© 2024 bastiangx",
+    "longDescription": "VR8 to WAV audio converter built with Rust. Features batch processing, smart memory handling, and a modern user interface",
+    "targets": ["appimage", "deb"],
+    "publisher": "bastiangx",
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
       "icons/128x128@2x.png",
-      "icons/icon.icns",
-      "icons/icon.ico"
+      "icons/256x256.png",
+      "icons/icon.png"
     ]
   }
 }

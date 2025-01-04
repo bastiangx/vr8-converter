@@ -1,6 +1,7 @@
 <script lang="ts">
   import { invoke } from "@tauri-apps/api/core";
   import { open } from "@tauri-apps/plugin-dialog";
+  import { error } from "@tauri-apps/plugin-log";
   import Toast from "$lib/components/Toast.svelte";
   import SuccessView from "$lib/components/SuccessView.svelte";
   import FileList from "$lib/components/fileList.svelte";
@@ -50,7 +51,6 @@
     );
 
     if (uniqueFiles.length === 0) {
-      // showToast('No new files selected', 'error');
       return;
     }
 
@@ -73,7 +73,6 @@
 
       if (output_dir) {
         selectedOutputDir = output_dir;
-        // showToast('Output directory selected', 'success');
       } else {
         showToast("Output directory selection cancelled", "error");
       }
@@ -85,18 +84,19 @@
 
   async function handleConvert() {
     if (!selectedOutputDir) {
-      showToast("Please select an output folder", "error");
+      showToast(`Please select an output folder`, "error");
       return;
     }
     converting = true;
+
     try {
-      result = await invoke("convert_files", {
+      result = await invoke("convert_files_command", {
         paths: selectedFiles,
         outputDir: selectedOutputDir,
       });
       view = "success";
     } catch (e) {
-      console.error(e);
+      error(`Conv Failed: ${e}`);
     } finally {
       converting = false;
     }
@@ -126,7 +126,7 @@
       class="
       card bg-base-200 w-full max-w-xl h-64 flex items-center
       justify-center cursor-pointer border-4 border-dashed
-      border-base-300 hover:border-secondary transition-colors
+      border-secondary hover:border-secondary/50 transition-colors
       "
       on:click={handleClick}
       on:keydown={(e) => e.key === "Enter" && handleClick()}
@@ -136,7 +136,7 @@
           <span class="loading loading-spinner loading-lg"></span>
           <p class="mt-2">Converting...</p>
         {:else}
-          <p class="text-lg">Click here to choose your file</p>
+          <p class="text-lg font-medium">Click here to choose your file</p>
         {/if}
       </div>
     </div>
@@ -157,7 +157,11 @@
           bind:files={selectedFiles}
           output_dir={selectedOutputDir}
           onPickDir={pickOutputDir}
-          onCancel={() => (view = "select")}
+          onCancel={() => {
+            view = "select";
+            selectedFiles = [];
+            selectedOutputDir = null;
+          }}
           onConvert={handleConvert}
           onAddMore={handleClick}
         />

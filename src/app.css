@@ -3,31 +3,31 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Work Sans";
+  font-family: "SF-Pro";
   font-display: swap;
   font-style: normal;
   font-weight: 400;
-  src: url("src/lib/assets/WorkSans-Regular.woff2") format("woff2");
+  src: url("src/lib/assets/SF-Pro-Regular.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Work Sans";
+  font-family: "SF-Pro";
   font-display: swap;
-  fonts-style: normal;
+  font-style: normal;
   font-weight: 700;
-  src: url("src/lib/assets/WorkSans-Bold.woff2") format("woff2");
+  src: url("src/lib/assets/SF-Pro-Bold.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Work Sans";
+  font-family: "SF-Pro";
   font-display: swap;
-  font-style: italic;
-  font-weight: 400;
-  src: url("src/lib/assets/WorkSans-Italic.woff2") format("woff2");
+  font-style: medium;
+  font-weight: 500;
+  src: url("src/lib/assets/SF-Pro-Medium.woff2") format("woff2");
 }
 
 @layer base {
   body {
     font-family:
-      "Work Sans",
+      "SF-Pro",
       system-ui,
       -apple-system,
       sans-serif;

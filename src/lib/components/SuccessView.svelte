@@ -2,13 +2,16 @@
   export let duration: number;
   export let outputDir: string;
   export let onConvertMore: () => void;
-  import { open } from "@tauri-apps/plugin-shell";
+  import { open } from "@tauri-apps/plugin-dialog";
 
   $: formattedDuration = (duration / 1000).toFixed(2);
   $: shortPath = outputDir.split("/").slice(-2).join("/");
 
-  const openFolder = () => {
-    open(outputDir);
+  const openFolder = async () => {
+    await open({
+      directory: true,
+      defaultPath: outputDir,
+    });
   };
 </script>
 
