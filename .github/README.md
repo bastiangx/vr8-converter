@@ -13,13 +13,21 @@
 
 ## ✨ Features
 
-fast conversion using Rust
-Batch processing support
-Smart memory handling for large files
+- fast conversion using Rust
+- Batch processing support
+- Smart memory handling for large files
 
 ## 🚀 Setup
 
-Check out the **Latest Release** and download the installer or <a href="#build">Build</a> from source (Linux)
+installers available for:
+
+- Windows (`exe`, `msi`)
+- Linux (`deb`, `rpm`, `appimage`)
+
+> Check out the **Latest Release** and download the installer or **build** from source
+
+> [!NOTE]
+> For Arch/AMD users, there's a known issue specificlly with `appimage` binaries. Build from source instead.
 
 ## 🔨 Build
 
@@ -45,5 +53,6 @@ The **binaries** can be found in:
 
 `../release/bundle/`
 
-_Windows_: msi/ and nsis/
-_Linux_: appimage/, deb/, rpm/
+- _Windows_: msi/ and nsis/
+
+- _Linux_: appimage/, deb/, rpm/
