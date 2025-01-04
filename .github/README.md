@@ -12,10 +12,10 @@
 
 <div align="center">
   <h2>📸 Screenshots</h2>
-  <img src=".github/assets/sc-2.png" width="45%">
-  <img src=".github/assets/sc-3.png" width="45%">
+  <img src="/assets/sc-2.png" width="45%">
+  <img src="/assets/sc-3.png" width="45%">
   <br/><br/>
-  <img src=".github/assets/sc-1.png" width="45%">
+  <img src="/assets/sc-1.png" width="45%">
 </div>
 
 <div align="center">
