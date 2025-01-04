@@ -14,10 +14,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - platform: "macos-latest"
-            args: "--target aarch64-apple-darwin"
-          - platform: "macos-latest"
-            args: "--target x86_64-apple-darwin"
           - platform: "ubuntu-22.04"
             args: ""
           - platform: "windows-latest"
@@ -57,8 +53,6 @@ jobs:
 
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
-        with:
-          targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
 
       - name: Rust cache
         uses: swatinem/rust-cache@v2
@@ -74,6 +68,31 @@ jobs:
         with:
           tagName: v__VERSION__
           releaseName: "VR8 Converter v__VERSION__"
-          releaseBody: "🎉 See the assets to download and install this version."
+          releaseBody: |
+            VR8 to WAV Converter
+
+            ### Downloads
+            - Windows: Choose either .msi or setup.exe
+            - Linux: AppImage, .deb, or .rpm
+
+            ##### Checksums
+            SHA256 checksums are provided in checksums.txt
           releaseDraft: true
           args: ${{ matrix.args }}
+
+      - name: Generate checksums
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          cd src-tauri/target/release/bundle
+          for file in */*; do
+            if [ -f "$file" ]; then
+              sha256sum "$file" >> checksums.txt
+            fi
+          done
+
+      - name: Upload checksums
+        if: matrix.platform == 'ubuntu-22.04'
+        uses: actions/upload-artifact@v3
+        with:
+          name: checksums
+          path: src-tauri/target/release/bundle/checksums.txt
